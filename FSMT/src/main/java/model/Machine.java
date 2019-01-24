@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 /**
  * This is the primary class that controls a collection of states.
  * It has a starting State that starts the sequence, a current State and an
@@ -12,16 +10,12 @@ import java.util.ArrayList;
  *
  */
 public class Machine {
-	private ArrayList<State> states ;
 	private State currentState ;
 	private State endState ;
 	private State startState ;
 	private boolean found ;
 	
 	//Getters
-	public ArrayList<State> getStates() {
-		return states;
-	}
 	public State getCurrentState() {
 		return currentState;
 	}
@@ -36,9 +30,6 @@ public class Machine {
 	}
 
 	//Setters
-	public void setStates( ArrayList<State> states ) {
-		this.states = states;
-	}
 	public void setCurrentState( State currentState ) {
 		this.currentState = currentState;
 	}
@@ -55,21 +46,11 @@ public class Machine {
 	//Constructors
 	public Machine( State startState , State end ) {
 		this.startState = startState ;
-		this.states = new ArrayList<>() ;
 		currentState = null ;
 		endState = end ;
 		found = false ;
 	}
-	
-	public Machine( State startState , State end , State... states ) {
-		this( startState , end ) ;
-		if( states != null ) {
-			for( State state : states ) {
-				this.states.add( state ) ;
-			}
-		}
-	}
-	
+
 	//Methods
 	/**
 	 * Advances the machine to the next State, depending on the input it takes
@@ -108,8 +89,6 @@ public class Machine {
 				+ ( ( currentState == null ) ? 0 : currentState.hashCode() );
 		result = prime * result
 				+ ( ( endState == null ) ? 0 : endState.hashCode() );
-		result = prime * result
-				+ ( ( states == null ) ? 0 : states.hashCode() );
 		return result;
 	}
 	
@@ -127,18 +106,14 @@ public class Machine {
 			if( other.endState != null ) return false;
 		}
 		else if( ! endState.equals( other.endState ) ) return false;
-		if( states == null ) {
-			if( other.states != null ) return false;
-		}
-		else if( ! states.equals( other.states ) ) return false;
 		return true;
 	}
 	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append( "Machine [states=" );
-		builder.append( states );
+		builder.append( "Machine [startState=" );
+		builder.append( startState );
 		builder.append( ", currentState=" );
 		builder.append( currentState );
 		builder.append( ", endState=" );

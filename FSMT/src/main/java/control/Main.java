@@ -17,7 +17,7 @@ public class Main {
 		
 		C.setExit( "A" , A ) ;
 		
-		Machine machine = new Machine( A , C , A , B , C ) ;
+		Machine machine = new Machine( A , C ) ;
 		
 		String input = "C-B-A-A-B-C-A-B-A-C-A-B-C-D-F-A-B-S-A-C-B" ;
 		
